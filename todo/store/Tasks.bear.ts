@@ -1,9 +1,23 @@
 import {create} from "zustand"
 
+const mockTasks = {
+    "1": {
+        id: "1",
+        body: "mockttest",
+        createdAt: Date.toString()
+    },
+    "2": {
+        id: "1",
+        body: "mockttest2",
+        createdAt: Date.toString()
+    }
+}
+
+
 export type TaskType = {
     id: string;
     body: string;
-    createdAt: Date;
+    createdAt: string;
 }
 
 type TasksStoreIntialStateType = {
@@ -16,10 +30,10 @@ type TasksStoreActions = {
     updateTask: (newTask: TaskType) => void
 }
 
-type TaskStoreType = TasksStoreIntialStateType & TasksStoreActions
+export type TaskStoreType = TasksStoreIntialStateType & TasksStoreActions
 
 const InitialState: TasksStoreIntialStateType = {
-    tasks: {}
+    tasks: mockTasks
 }
 
 const useTasks = create<TaskStoreType>((set,get) => ({
@@ -38,3 +52,6 @@ const useTasks = create<TaskStoreType>((set,get) => ({
 }))
 
 export default useTasks
+
+
+
